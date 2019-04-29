@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.gao</groupId>
+	<artifactId>easywork</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>easywork-springboot</name>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<springboot-version>2.1.4.RELEASE</springboot-version>
+		<!-- argLine解决打包控制台中文乱码 -->
+		<argLine>-Dfile.encoding=UTF-8</argLine>
+		<!-- 跳过打包测试 -->
+		<skipTests>true</skipTests>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<springboot-port>8890</springboot-port>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${springboot-version}</version>
+			<exclusions>
+				<!-- 切换log4j2日志读取 -->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${springboot-version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${springboot-version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<version>${springboot-version}</version>
+		</dependency>
+
+		<!-- Spring Boot Mybatis 依赖 -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+			<version>${springboot-version}</version>
+		</dependency>
+
+		<!--redis-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<version>${springboot-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.18</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<package.environment>dev</package.environment>
+				<log4j2.log.filepath>D:log/easywork</log4j2.log.filepath>
+			</properties>
+			<!-- 是否默认 true表示默认-->
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+
+		<profile>
+			<id>test</id>
+			<properties>
+				<package.environment>test</package.environment>
+				<log4j2.log.filepath>/home/logs/easywork</log4j2.log.filepath>
+			</properties>
+		</profile>
+
+		<profile>
+			<!-- 生产环境 -->
+			<id>prod</id>
+			<properties>
+				<package.environment>prod</package.environment>
+				<log4j2.log.filepath>/home/logs/easywork</log4j2.log.filepath>
+			</properties>
+		</profile>
+	</profiles>
+
+	<build>
+		<finalName>${project.artifactId}-${project.version}-${springboot-port}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/webapp</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>application-${package.environment}.yml</include>
+					<include>application.yml</include>
+					<include>**/*.xml</include>
+					<include>banner.txt</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatisplus-maven-plugin</artifactId>
+				<version>1.0</version>
+				<configuration>
+					<!-- 输出目录(默认java.io.tmpdir) -->
+					<outputDir>D:\code\mp</outputDir>
+					<!-- 是否覆盖同名文件(默认false) -->
+					<fileOverride>true</fileOverride>
+					<!-- mapper.xml 中添加二级缓存配置(默认true) -->
+					<enableCache>true</enableCache>
+					<!-- 开发者名称 -->
+					<author>gaosheng</author>
+					<!-- 是否开启 ActiveRecord 模式(默认true) -->
+					<activeRecord>false</activeRecord>
+					<!-- 数据源配置，( **必配** ) -->
+					<dataSource>
+						<driverName>com.mysql.cj.jdbc.Driver</driverName>
+						<url>jdbc:mysql://192.168.162.134:3306/easywork?allowMultiQueries=true&amp;useSSL=false&amp;characterEncoding=UTF-8</url>
+						<username>root</username>
+						<password>Root</password>
+					</dataSource>
+					<strategy>
+						<!-- 字段生成策略，四种类型，从名称就能看出来含义：
+                            nochange(默认),
+                            underline_to_camel,(下划线转驼峰)
+                            remove_prefix,(去除第一个下划线的前部分，后面保持不变)
+                            remove_prefix_and_camel(去除第一个下划线的前部分，后面转驼峰) -->
+						<naming>underline_to_camel</naming>
+						<!-- 表前缀 -->
+						<tablePrefix></tablePrefix>
+						<!--Entity中的ID生成策略（默认 id_worker）-->
+						<idGenType>uuid</idGenType>
+						<!--自定义超类-->
+						<!--自定义超类-->
+						<superServiceImplClass>com.baomidou.mybatisplus.service.impl.ServiceImpl</superServiceImplClass>
+						<superServiceClass>com.baomidou.mybatisplus.service.IService</superServiceClass>
+						<!-- 要包含的表 与exclude 二选一配置-->
+						<!--<include>
+                            <property>sys_mch_order_log</property>
+                        </include>-->
+						<!-- 要排除的表 -->
+						<!--<exclude>-->
+						<!--<property>schema_version</property>-->
+						<!--</exclude>-->
+					</strategy>
+					<packageInfo>
+						<!-- 父级包名称，如果不写，下面的service等就需要写全包名(默认com.baomidou) -->
+						<parent>com.gao</parent>
+						<!--service包名(默认service)-->
+						<service>service</service>
+						<!--serviceImpl包名(默认service.impl)-->
+						<serviceImpl>service.impl</serviceImpl>
+						<!--entity包名(默认entity)-->
+						<entity>entity</entity>
+						<!--mapper包名(默认mapper)-->
+						<mapper>dao</mapper>
+						<!--xml包名(默认mapper.xml)-->
+						<xml>dao.mapper</xml>
+					</packageInfo>
+					<template>
+						<!-- 定义controller模板的路径 -->
+						<!--<controller>/template/controller1.java.vm</controller>-->
+					</template>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>8.0.11</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${springboot-version}</version>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

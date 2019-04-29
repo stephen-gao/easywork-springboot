@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gao.dao.UserMapper">
+	<!--开启二级缓存-->
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+	<resultMap id="BaseResultMap" type="com.gao.entity.User">
+		<id column="id" property="id" />
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="tel" property="tel" />
+		<result column="photo" property="photo" />
+		<result column="register_id" property="registerId" />
+		<result column="open_id" property="openId" />
+		<result column="balance" property="balance" />
+		<result column="vip" property="vip" />
+		<result column="create_time" property="createTime" />
+		<result column="edit_time" property="editTime" />
+	</resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        id, username, password, tel, photo, register_id AS registerId, open_id AS openId, balance, vip, create_time AS createTime, edit_time AS editTime
+    </sql>
+</mapper>
