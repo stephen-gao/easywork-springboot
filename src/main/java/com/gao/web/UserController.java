@@ -2,11 +2,14 @@ package com.gao.web;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gao.base.BaseController;
 import com.gao.base.BaseVO;
 import com.gao.entity.User;
+import com.gao.result.Result;
+import com.gao.result.ResultFactory;
 import com.gao.service.IUserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,13 +38,13 @@ public class UserController extends BaseController{
 
     @GetMapping("/userPage")
     @ResponseBody
-    public IPage<User> getUserPage(User user, BaseVO vo){
+    public Result getUserPage(User user, BaseVO vo){
         logger.info(JSON.toJSONString(user));
         Page<User> page = new Page<>();
         page.setCurrent(vo.getCurrent());
         page.setSize(vo.getSize());
         setPageSort(page,vo);
-        return userService.getUserPage(page,user);
+        return ResultFactory.getSuccessResult(userService.getUserPage(page,user));
     }
 
     @PostMapping("/add")

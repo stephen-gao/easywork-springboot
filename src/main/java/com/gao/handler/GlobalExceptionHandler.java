@@ -19,6 +19,8 @@ public class GlobalExceptionHandler {
 
     private Logger logger = LogManager.getLogger(this.getClass());
 
+
+
     @ExceptionHandler(RuntimeException.class)
     @ResponseBody
     public Result exceptionHandler(RuntimeException e){
