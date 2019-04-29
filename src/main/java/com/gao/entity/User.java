@@ -1,9 +1,7 @@
 package com.gao.entity;
 
-import com.baomidou.mybatisplus.annotations.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -21,7 +19,6 @@ public class User implements Serializable {
 	/**
 	 * 
 	 */
-	@TableId(type = IdType.UUID)
 	private String id;
 
 	/**
@@ -47,13 +44,11 @@ public class User implements Serializable {
 	/**
 	 * 极光推送识别码
 	 */
-	@TableField(value="register_id")
 	private String registerId;
 
 	/**
 	 * 微信openId
 	 */
-	@TableField(value="open_id")
 	private String openId;
 
 	/**
@@ -69,13 +64,11 @@ public class User implements Serializable {
 	/**
 	 * 创建时间
 	 */
-	@TableField(value="create_time")
 	private Date createTime;
 
 	/**
 	 * 编辑时间
 	 */
-	@TableField(value="edit_time")
 	private Date editTime;
 
 

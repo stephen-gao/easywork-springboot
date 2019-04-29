@@ -1,9 +1,9 @@
 package com.gao.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gao.entity.UserInfo;
 import com.gao.dao.UserInfoMapper;
 import com.gao.service.IUserInfoService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

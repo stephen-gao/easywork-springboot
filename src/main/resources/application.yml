@@ -2,7 +2,7 @@
 server:
   port: @springboot-port@
   servlet:
-    context-path: /message
+    context-path: /easywork
 
 # 多环境配置文件激活属性
 spring:

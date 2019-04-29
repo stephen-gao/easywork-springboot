@@ -1,9 +1,5 @@
 package com.gao.entity;
 
-import com.baomidou.mybatisplus.annotations.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,7 +11,6 @@ import java.util.Date;
  * @author gaosheng
  * @since 2019-04-29
  */
-@TableName("user_info")
 public class UserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -23,13 +18,11 @@ public class UserInfo implements Serializable {
 	/**
 	 * 
 	 */
-	@TableId(type = IdType.UUID)
 	private String id;
 
 	/**
 	 * 
 	 */
-	@TableField(value="user_id")
 	private Integer userId;
 
 	/**
@@ -50,7 +43,6 @@ public class UserInfo implements Serializable {
 	/**
 	 * 身份证
 	 */
-	@TableField(value="id_card")
 	private String idCard;
 
 	/**

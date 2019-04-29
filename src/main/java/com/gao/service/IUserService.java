@@ -1,7 +1,7 @@
 package com.gao.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.gao.entity.User;
-import com.baomidou.mybatisplus.service.IService;
 
 /**
  * <p>
