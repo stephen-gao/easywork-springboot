@@ -1,11 +1,11 @@
-package enums;
+package com.gao.result;
 
 /**
  * @Author gs
  * @Date created time 2019/4/29 17:57
  * @Description
  */
-public enum ResultCode {
+public enum ResultEnum {
     SUCCESS(10000,""),//成功
     FAIL(40000,"操作失败"),//失败
     UNAUTHORIZED(40001,"权限不足"),//未认证（签名错误）
@@ -17,7 +17,7 @@ public enum ResultCode {
     private Integer code;
     private String message;
 
-    ResultCode(Integer code, String message) {
+    ResultEnum(Integer code, String message) {
         this.code = code;
         this.message = message;
     }

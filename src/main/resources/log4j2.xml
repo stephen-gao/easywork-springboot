@@ -2,8 +2,7 @@
 <configuration status="WARN" monitorInterval="300">
 
     <Properties>
-        <Property name="pattern">%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}:%L -%m%n</Property>
-        <Property name="err_pattern">%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n</Property>
+        <Property name="pattern">%highlight{%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L -%m%n}{FATAL=red, ERROR=red, WARN=yellow, INFO=cyan, TRACE=blue}</Property>
         <Property name="filepath">@log4j2.log.filepath@</Property>
     </Properties>
     <appenders>
@@ -32,7 +31,7 @@
         <RollingFile name="RollingFileError" fileName="${filepath}/message_error.log"
                      filePattern="${filepath}/$${date:yyyy-MM}/message_error-%d{yyyy-MM-dd}-%i.log">
             <ThresholdFilter level="ERROR"/>
-            <PatternLayout pattern="${err_pattern}"/>
+            <PatternLayout pattern="${pattern}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="100 MB"/>
