@@ -1,0 +1,11 @@
+# rabbitmq 配置
+rabbitmq:
+  host: 127.0.0.1
+  port: 5672
+  username: admin
+  password: admin
+
+# 极光推送配置
+jiguang:
+  appKey: 46e0621dd911cc7360e23998
+  masterSecret: 09637a00ef7f53749e10b624

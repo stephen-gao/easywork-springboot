@@ -1,0 +1,16 @@
+# 修改tomcat的默认的端口号
+server:
+  port: @springboot-port@
+  servlet:
+    context-path: /message
+
+# 多环境配置文件激活属性
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+  profiles:
+    active: @package.environment@
+logging:
+  config: classpath:log4j2.xml
+
+# rabbitmq
