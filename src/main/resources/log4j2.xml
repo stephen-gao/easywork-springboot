@@ -11,7 +11,7 @@
             <!--  控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
             <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
             <!--  这个都知道是输出日志的格式 -->
-            <PatternLayout pattern="${pattern}"/>
+            <PatternLayout disableAnsi="false" noConsoleNoAnsi="false" pattern="${pattern}"/>
         </Console>
 
         <!--配置自定义日志，按天输出-->
