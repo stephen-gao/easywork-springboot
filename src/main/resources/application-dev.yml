@@ -1,11 +1,14 @@
-# rabbitmq 配置
-rabbitmq:
-  host: 192.168.162.134
-  port: 5672
-  username: gaosheng
-  password: gaosheng
-
-# 极光推送配置
-jiguang:
-  appKey: 46e0621dd911cc7360e23998
-  masterSecret: 09637a00ef7f53749e10b624
+# DataSource Config
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.162.134:3306/easywork?allowMultiQueries=true&useSSL=false&characterEncoding=UTF-8
+    username: root
+    password: Root
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 500
+    #打印慢sql
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000

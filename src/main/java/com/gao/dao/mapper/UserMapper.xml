@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gao.dao.UserMapper">
 	<!--开启二级缓存-->
-	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+	<!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
 
 	<resultMap id="BaseResultMap" type="com.gao.entity.User">
 		<id column="id" property="id" />

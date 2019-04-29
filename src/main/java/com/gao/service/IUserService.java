@@ -1,5 +1,7 @@
 package com.gao.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.gao.entity.User;
 
@@ -12,5 +14,6 @@ import com.gao.entity.User;
  * @since 2019-04-29
  */
 public interface IUserService extends IService<User> {
-	
+
+    IPage<User> getUserPage(Page<User> page, User user);
 }

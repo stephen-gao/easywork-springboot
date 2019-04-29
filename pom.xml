@@ -94,7 +94,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
-			<version>1.0.18</version>
+			<version>1.1.10</version>
 		</dependency>
 
 		<dependency>
@@ -223,7 +223,7 @@
 					</packageInfo>
 					<template>
 						<!-- 定义controller模板的路径 -->
-						<!--<controller>/template/controller1.java.vm</controller>-->
+						<!--<web>/template/controller1.java.vm</web>-->
 					</template>
 				</configuration>
 				<dependencies>

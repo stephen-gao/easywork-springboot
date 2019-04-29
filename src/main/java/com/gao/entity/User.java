@@ -1,5 +1,9 @@
 package com.gao.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.gao.base.BaseVO;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -19,6 +23,7 @@ public class User implements Serializable {
 	/**
 	 * 
 	 */
+	@TableId(type = IdType.UUID)
 	private String id;
 
 	/**
