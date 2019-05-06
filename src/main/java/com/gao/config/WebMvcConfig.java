@@ -3,6 +3,7 @@ package com.gao.config;
 import com.gao.interceptor.AuthorityInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -26,5 +27,13 @@ public class WebMvcConfig implements WebMvcConfigurer{
         interceptorRegistration.excludePathPatterns("/login");
         interceptorRegistration.excludePathPatterns("/noAuthority");
         interceptorRegistration.excludePathPatterns("/user/add");
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH")
+                .allowCredentials(true).maxAge(3600);
     }
 }
