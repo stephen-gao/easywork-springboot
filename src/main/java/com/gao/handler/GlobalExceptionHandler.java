@@ -27,6 +27,7 @@ public class GlobalExceptionHandler {
         //捕捉异常打印控制台
         logger.error(e);
         logger.error(e);
-        return ResultFactory.getErrorResult(ResultEnum.INTERNAL_SERVER_ERROR);
+        e.printStackTrace();
+        return ResultFactory.getDefaultResult(ResultEnum.INTERNAL_SERVER_ERROR);
     }
 }

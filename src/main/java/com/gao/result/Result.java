@@ -16,11 +16,6 @@ public class Result<T> {
     public Result() {
     }
 
-    public Result(T data) {
-        this.code = ResultEnum.SUCCESS.getCode();
-        this.data = data;
-    }
-
     public Result(Integer code, String message) {
         this.code = code;
         this.message = message;

@@ -8,6 +8,7 @@
 		<id column="id" property="id" />
 		<result column="username" property="username" />
 		<result column="password" property="password" />
+		<result column="nickname" property="nickname" />
 		<result column="tel" property="tel" />
 		<result column="photo" property="photo" />
 		<result column="register_id" property="registerId" />
@@ -16,10 +17,28 @@
 		<result column="vip" property="vip" />
 		<result column="create_time" property="createTime" />
 		<result column="edit_time" property="editTime" />
+		<result column="status" property="status" />
 	</resultMap>
 
     <!-- 通用查询结果列-->
     <sql id="Base_Column_List">
-        id, username, password, tel, photo, register_id AS registerId, open_id AS openId, balance, vip, create_time AS createTime, edit_time AS editTime
+        id, username, password,nickname, tel, photo, register_id AS registerId, open_id AS openId, balance, vip, create_time AS createTime, edit_time AS editTime,status
     </sql>
+	
+	<insert id="addUser" parameterType="RegisterUser" useGeneratedKeys="true" keyProperty="id" >
+		<selectKey resultType="String" keyProperty="id" order="BEFORE">
+			select REPLACE(UUID(),'-','')
+		</selectKey>
+		INSERT INTO user
+			(id, username, password, nickname,tel, photo, register_id, open_id, salt, create_time, edit_time)
+		VALUES
+			(#{id}, #{username}, #{password},#{nickname}, #{tel}, #{photo}, #{registerId}, #{openId},
+			 #{salt}, #{createTime}, #{editTime})
+	</insert>
+
+	<select id="selectRegisterUser" parameterType="User" resultType="RegisterUser">
+		SELECT id, username, password, nickname, tel, photo, register_id AS registerId, open_id AS openId, balance, vip, create_time AS createTime, edit_time AS editTime,status,salt
+		FROM user
+		WHERE username = #{username}
+	</select>
 </mapper>

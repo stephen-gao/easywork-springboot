@@ -1,6 +1,7 @@
 package com.gao.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.gao.entity.RegisterUser;
 import com.gao.entity.User;
 
 /**
@@ -12,5 +13,7 @@ import com.gao.entity.User;
  * @since 2019-04-29
  */
 public interface UserMapper extends BaseMapper<User> {
+    void addUser(RegisterUser user);
 
+    RegisterUser selectRegisterUser(User user);
 }

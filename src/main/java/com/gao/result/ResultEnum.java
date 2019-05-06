@@ -6,7 +6,7 @@ package com.gao.result;
  * @Description
  */
 public enum ResultEnum {
-    SUCCESS(10000,""),//成功
+    SUCCESS(10000,"操作成功"),//成功
     FAIL(40000,"操作失败"),//失败
     UNAUTHORIZED(40001,"权限不足"),//未认证（签名错误）
     PARAM_ERROR(40002,"传参有误"),//失败

@@ -35,6 +35,10 @@ public class User implements Serializable {
 	 * 密码
 	 */
 	private String password;
+	/**
+	 * 昵称
+	 */
+	private String nickname;
 
 	/**
 	 * 电话
@@ -62,7 +66,7 @@ public class User implements Serializable {
 	private BigDecimal balance;
 
 	/**
-	 * 
+	 * vip 0/普通用户 1/v1
 	 */
 	private Integer vip;
 
@@ -76,6 +80,10 @@ public class User implements Serializable {
 	 */
 	private Date editTime;
 
+	/**
+	 *账号状态 0/正常 1/监控 2/异常 3/冻结 4/锁定 5/暂停 9/注销
+	 */
+	private Integer status;
 
 
 	public String getId() {
@@ -166,4 +174,19 @@ public class User implements Serializable {
 		this.editTime = editTime;
 	}
 
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 }

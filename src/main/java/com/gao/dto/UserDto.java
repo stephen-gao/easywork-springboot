@@ -1,5 +1,8 @@
 package com.gao.dto;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -14,6 +17,7 @@ public class UserDto {
     /**
      *
      */
+    @TableId(type = IdType.UUID)
     private String id;
 
     /**
@@ -22,9 +26,9 @@ public class UserDto {
     private String username;
 
     /**
-     * 密码
+     * 昵称
      */
-    private String password;
+    private String nickname;
 
     /**
      * 电话
@@ -37,22 +41,12 @@ public class UserDto {
     private String photo;
 
     /**
-     * 极光推送识别码
-     */
-    private String registerId;
-
-    /**
-     * 微信openId
-     */
-    private String openId;
-
-    /**
      * 余额
      */
     private BigDecimal balance;
 
     /**
-     *
+     * vip 0/普通用户 1/v1
      */
     private Integer vip;
 
@@ -66,7 +60,15 @@ public class UserDto {
      */
     private Date editTime;
 
+    /**
+     *账号状态 0/正常 1/监控 2/异常 3/冻结 4/锁定 5/暂停 9/注销
+     */
+    private Integer status;
 
+    /**
+     * 用户访问token
+     */
+    private String token;
 
     public String getId() {
         return id;
@@ -84,12 +86,12 @@ public class UserDto {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getTel() {
@@ -106,22 +108,6 @@ public class UserDto {
 
     public void setPhoto(String photo) {
         this.photo = photo;
-    }
-
-    public String getRegisterId() {
-        return registerId;
-    }
-
-    public void setRegisterId(String registerId) {
-        this.registerId = registerId;
-    }
-
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId;
     }
 
     public BigDecimal getBalance() {
@@ -154,5 +140,21 @@ public class UserDto {
 
     public void setEditTime(Date editTime) {
         this.editTime = editTime;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

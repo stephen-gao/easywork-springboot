@@ -12,3 +12,15 @@ spring:
     maxWait: 500
     #打印慢sql
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  redis:
+    database: 0
+    host: 192.168.162.134
+    port: 6379
+    password: redis
+    pool:
+      jedis:
+        max-active: 200
+        max-wait: -1
+        max-idle: 10
+        min-idle: 1
+    timeout: 1000

@@ -7,13 +7,20 @@ package com.gao.result;
  */
 public class ResultFactory {
 
-    public static Result getSuccessResult(Object data){
-        Result result = new Result<>(data);
+    public static Result getDataResult(Object data){
+        Result result = new Result<>();
+        result.setCode(ResultEnum.SUCCESS.getCode());
+        result.setData(data);
         return result;
     }
 
-    public static Result getErrorResult(ResultEnum enm){
+    public static Result getDefaultResult(ResultEnum enm){
         Result result = new Result<>(enm.getCode(),enm.getMessage());
+        return result;
+    }
+
+    public static Result getMessgaeResult(ResultEnum enm,String message){
+        Result result = new Result<>(enm.getCode(),message);
         return result;
     }
 
