@@ -31,7 +31,7 @@ public class AuthorityInterceptor implements HandlerInterceptor{
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.warn("ApiInterceptor拦截器");
+        logger.warn("AuthorityInterceptor拦截器");
 
         String token = request.getHeader("token");
         if(!StringUtils.isEmpty(token)){
@@ -48,7 +48,7 @@ public class AuthorityInterceptor implements HandlerInterceptor{
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
-        logger.warn("ApiInterceptor拦截器 after");
+        logger.warn("AuthorityInterceptor拦截器 after");
         String token = request.getHeader("token");
         if(!StringUtils.isEmpty(token)){
             cache.expireHalfHour(userCacheKey+token);

@@ -50,7 +50,7 @@ public class LoginController {
     @GetMapping("/noAuthority")
     @ResponseBody
     public Result noAuthority(){
-        return ResultFactory.getMessgaeResult(ResultEnum.UNAUTHORIZED,"无访问权限");
+        return ResultFactory.getDefaultResult(ResultEnum.UNAUTHORIZED);
     }
 
 }
