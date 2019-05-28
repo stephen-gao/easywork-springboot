@@ -16,17 +16,17 @@ import java.util.concurrent.TimeUnit;
 public class RedisCacheImpl<HK, V> implements ICache<HK , V>{
 
     // 在构造器中获取redisTemplate实例, key(not hashKey) 默认使用String类型
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate<String, V> redisTemplate;
     // 在构造器中通过redisTemplate的工厂方法实例化操作对象
-    private HashOperations<String, Object, Object> hashOperations;
-    private ListOperations<String, Object> listOperations;
-    private ZSetOperations<String, Object> zSetOperations;
-    private SetOperations<String, Object> setOperations;
-    private ValueOperations<String, Object> valueOperations;
+    private HashOperations<String, HK, V> hashOperations;
+    private ListOperations<String, V> listOperations;
+    private ZSetOperations<String, V> zSetOperations;
+    private SetOperations<String, V> setOperations;
+    private ValueOperations<String, V> valueOperations;
 
     // 实例化操作对象后就可以直接调用方法操作Redis数据库
     @Autowired
-    public RedisCacheImpl(RedisTemplate<String, Object> redisTemplate) {
+    public RedisCacheImpl(RedisTemplate<String, V> redisTemplate) {
         this.redisTemplate = redisTemplate;
         this.hashOperations = redisTemplate.opsForHash();
         this.listOperations = redisTemplate.opsForList();

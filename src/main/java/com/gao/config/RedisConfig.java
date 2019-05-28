@@ -27,7 +27,7 @@ import java.time.Duration;
  */
 @Configuration
 @EnableCaching
-public class RedisConfig extends CachingConfigurerSupport{
+public class RedisConfig<V> extends CachingConfigurerSupport{
 
     @Bean
     public KeyGenerator keyGenerator() {
@@ -65,14 +65,10 @@ public class RedisConfig extends CachingConfigurerSupport{
         return rcm;
     }
 
-    /**
-     * @Description: 防止redis入库序列化乱码的问题
-     * @return     返回类型
-     * @date 2018/4/12 10:54
-     */
+
     @Bean
-    public RedisTemplate redisTemplate(RedisConnectionFactory redisConnectionFactory){
-        StringRedisTemplate redisTemplate = new StringRedisTemplate();
+    public RedisTemplate<String,V> redisTemplate(RedisConnectionFactory redisConnectionFactory){
+        RedisTemplate<String,V> redisTemplate = new RedisTemplate();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
         //使用fastjson序列化
         FastJsonRedisSerializer fastJsonRedisSerializer = new FastJsonRedisSerializer(Object.class);
