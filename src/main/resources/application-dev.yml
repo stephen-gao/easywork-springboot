@@ -4,10 +4,8 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.162.134:3306/easywork?allowMultiQueries=true&useSSL=false&characterEncoding=UTF-8
-#    url: jdbc:mysql://101.132.182.102:3306/followenjoy_db?allowMultiQueries=true&useSSL=false&characterEncoding=UTF-8
     username: root
     password: Root
-#    password: followenjoy8787
     initialSize: 5
     minIdle: 5
     maxActive: 20

@@ -8,4 +8,4 @@ rabbitmq:
 # 极光推送配置
 jiguang:
   appKey: 46e0621dd911cc7360e23998
-  masterSecret: 09637a00ef7f53749e10b624
+  masterSecret: x49e10b624
